@@ -43,7 +43,7 @@ next.addEventListener("click",function(){
 
 
 for(let i = 0;i < totalCount; i++){
-    const span = document.createElement("span")
+    let span = document.createElement("span")
     span.classList.add("dot")
     dottarna.appendChild(span)
 

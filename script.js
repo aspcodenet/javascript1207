@@ -6,7 +6,35 @@ const hunden  = document.getElementById("hunden")
 
 
 
-// const date2 = new Date('2024-12-22T16:00:00');
+const dateToCountdown = new Date('2023-12-22T16:00:00');
+const days  = document.getElementById("days")
+const hours  = document.getElementById("hours")
+const minutes  = document.getElementById("minutes")
+const seconds  = document.getElementById("seconds")
+
+
+let antalSekunder = 0
+
+const updateCountdown = function(){
+    var now = new Date().getTime();
+    var distanceInMilliSeconds = dateToCountdown - now;
+    var daysLeft = Math.floor(distanceInMilliSeconds / (1000 * 60 * 60 * 24));
+    var hoursLeft = Math.floor((distanceInMilliSeconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutesLeft = Math.floor((distanceInMilliSeconds % (1000 * 60 * 60)) / (1000 * 60));
+    var secondsLeft = Math.floor((distanceInMilliSeconds % (1000 * 60)) / 1000);    
+
+    days.innerText = daysLeft
+    hours.innerText = hoursLeft
+    minutes.innerText = minutesLeft
+    seconds.innerText = secondsLeft
+    // // en sekund till gått!!
+    // antalSekunder = antalSekunder +1
+    // days.innerText=antalSekunder
+}
+
+
+setInterval(updateCountdown, 1000);
+//setInterval(updatyeBlaBla, 20000);
 
 const Product = function(name,category){
     this.name = name

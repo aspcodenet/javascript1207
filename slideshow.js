@@ -8,7 +8,7 @@ let activeIndex = 0
 let totalCount = allSlides.length
 const setActiveSlide = function(index){
     activeIndex = index
-    for(let i = 0; i <= index; i++){
+    for(let i = 0; i <= totalCount; i++){
         if (i === index){
             allSlides[i].style.display="block";
         }else {

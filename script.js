@@ -4,6 +4,10 @@ const wish = document.getElementById("wish")
 const lightrope = document.getElementById("lightrope")
 const hunden  = document.getElementById("hunden")
 
+
+
+// const date2 = new Date('2024-12-22T16:00:00');
+
 const Product = function(name,category){
     this.name = name
     this.category = category
@@ -105,6 +109,20 @@ function Player(id, name,jersey,team, position){
     this.team = team
     this.position = position
     this.visible = true
+    this.matches = function(searchFor){
+        return  this.name.toLowerCase().includes(searchFor) || 
+                this.position.toLowerCase().includes(searchFor) || 
+                this.team.toLowerCase().includes(searchFor)        
+    }
+    // this.isCool = function(){
+    //     if(this.jersey === 21){
+    //         return true;
+    //     }
+    //     return false;
+    // }
+    // this.message = function(){
+    //     alert(this.team)
+    // }
 }
 
 // I VERKLIGA LIVET - Vi "fetchar" från API
@@ -121,7 +139,7 @@ const players = [
 searchPlayer.addEventListener("input", function() {
     const searchFor = searchPlayer.value.toLowerCase() 
     for(let i = 0; i < players.length;i++){ // TODO add a matches function
-        if(players[i].name.toLowerCase().includes(searchFor) || players[i].position.toLowerCase().includes(searchFor) || players[i].team.toLowerCase().includes(searchFor) ){
+        if(players[i].matches(searchFor)){
             players[i].visible = true                            
         }else{
             players[i].visible = false 
@@ -229,6 +247,9 @@ const fillOptions = function(){
 updateTable()
 
 
+
+
+
 MicroModal.init({
     onShow: modal => console.info(`${modal.id} is shown`), // [1]
     onClose: modal => console.info(`${modal.id} is hidden`), // [2]
@@ -241,6 +262,21 @@ MicroModal.init({
     awaitCloseAnimation: false, // [9]
     debugMode: true // [10]
   });
+
+
+
+
+  
+var form = document.getElementById("form1");
+
+var pristine = new Pristine(form);
+
+form.addEventListener('submit', function (e) {
+   e.preventDefault();
+   var valid = pristine.validate();
+   //alert('Form is valid: ' + valid);
+}      )
+
 
 
 
